@@ -1,1 +1,1 @@
-# this is an animation of an eclipse made in Java
+# This is an animation of an eclipse made in Java
