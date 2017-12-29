@@ -1,0 +1,24 @@
+package Eclipse;
+
+import javax.swing.*;
+
+// Vroom vroom
+public class Driver {
+
+   public static void main(String[] args) {
+      // Creates the window
+      JFrame f = new JFrame("Solar Eclipse");
+      f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+      // Creates the images in window
+      Images draw = new Images();
+      f.add(draw);
+      f.setSize(600,500);
+      f.setVisible(true);
+		
+      // Commences animation
+      Timer t = new Timer(100, draw);
+      t.start();
+   }
+
+}
