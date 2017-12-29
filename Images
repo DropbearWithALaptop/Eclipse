@@ -1,0 +1,71 @@
+package Eclipse;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Images extends JPanel implements ActionListener {
+
+   // Used for moving moon
+   int lunaX = 400;
+
+   // Used to make the moon pause
+   int count = 0;
+	
+   // Position of the central circle of sun
+   int SUNSPOT = 210;
+	
+   // Building up the window and the stuff that will be in it
+   public void paintComponent(Graphics gg) {
+      
+      super.paintComponent(gg);
+		
+      // Background is a navy blue colour
+      this.setBackground(new Color(4,8,60));
+		
+      // The sun
+      // I need this many circles to create the gradient effect  
+      gg.setColor(new Color(89,7,7));
+      gg.fillOval(185, 135, 200, 200);
+      gg.setColor(new Color(119,9,9));
+      gg.fillOval(190, 140, 190, 190);
+      gg.setColor(new Color(150,12,12));
+      gg.fillOval(195, 145, 180, 180);
+      gg.setColor(new Color(178,14,14));
+      gg.fillOval(200, 150, 170, 170);
+      gg.setColor(new Color(204,16,16));
+      gg.fillOval(205, 155, 160, 160);
+      // This is the central circle
+      gg.setColor(new Color(237,225,9));
+      gg.fillOval(SUNSPOT, 160, 150, 150);
+		
+      // The moon
+      gg.setColor(Color.BLACK);
+      gg.fillOval(lunaX, 160, 150, 150);
+		
+   }
+	
+   @Override
+   // Making the moon move over the sun
+   public void actionPerformed(ActionEvent e) {
+      if (lunaX == SUNSPOT) {
+         // This is to make the moon pause over the sun for a monment
+         count++;
+         // this is to restart its movement
+         if (count >= 5) {
+            lunaX = lunaX - 5;
+	 }
+	 // this is to make it move to the left of the screen
+      } else if (lunaX != SUNSPOT) {
+         lunaX = lunaX - 5;
+      }
+
+      // This is to make the moon appear at the right of the screen after it disappears
+      if (lunaX <= -160) {
+         lunaX = 650;
+         count = 0;
+      }
+      repaint();
+   }
+
+}
